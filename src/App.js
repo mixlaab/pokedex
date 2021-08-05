@@ -1,5 +1,6 @@
 import { Component } from "react";
 import { CardList } from "./components/CardList/CardList.component";
+import { SearchBox } from "./components/SearchBox/SearchBox.component";
 import "./App.css";
 
 class App extends Component {
@@ -12,15 +13,14 @@ class App extends Component {
   }
 
   componentDidMount() {
-    /*
-    fetch("https://jsonplaceholder.typicode.com/users")
-      .then((response) => response.json())
-      .then((users) => console.log(users));
-      */
     fetch("https://pokeapi.co/api/v2/pokemon/?limit=898")
       .then((response) => response.json())
       .then((pokedex) => this.setState({ pokedex: pokedex.results }));
   }
+
+  handleChange = (e) => {
+    this.setState({ searchField: e.target.value });
+  };
 
   render() {
     const { pokedex, searchField } = this.state;
@@ -33,10 +33,9 @@ class App extends Component {
     console.log(filteredPokemons);
     return (
       <div className="App">
-        <input
-          type="search"
+        <SearchBox
           placeholder="Search pokemon"
-          onChange={(e) => this.setState({ searchField: e.target.value })}
+          handleSearch={this.handleChange}
         />
         <CardList pokedex={filteredPokemons} />
       </div>
