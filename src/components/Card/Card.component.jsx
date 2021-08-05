@@ -9,7 +9,7 @@ export const Card = (props) => (
       width="300"
       height="300"
     ></img>
-    <h1> {props.pokemon.name} </h1>
+    <h2> {props.pokemon.name} </h2>
     <p> {props.pokemon.url} </p>
   </div>
 );

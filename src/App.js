@@ -33,6 +33,7 @@ class App extends Component {
     console.log(filteredPokemons);
     return (
       <div className="App">
+        <h1>Pokedex</h1>
         <SearchBox
           placeholder="Search pokemon"
           handleSearch={this.handleChange}

@@ -36,3 +36,10 @@
     transform: rotate(360deg);
   }
 }
+
+h1 {
+  font-family: "Righteous", Courier, monospace;
+  font-size: 72px;
+  /*color: rgb(10, 179, 122);*/
+  color: yellow;
+}
