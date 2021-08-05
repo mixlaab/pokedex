@@ -1,4 +1,5 @@
 import { Component } from "react";
+import { CardList } from "./components/CardList/CardList.component";
 import "./App.css";
 
 class App extends Component {
@@ -6,6 +7,7 @@ class App extends Component {
     super();
     this.state = {
       pokedex: [],
+      searchField: "",
     };
   }
 
@@ -15,22 +17,28 @@ class App extends Component {
       .then((response) => response.json())
       .then((users) => console.log(users));
       */
-    fetch("https://pokeapi.co/api/v2/pokemon/?limit=9")
+    fetch("https://pokeapi.co/api/v2/pokemon/?limit=500")
       .then((response) => response.json())
       .then((pokedex) => this.setState({ pokedex: pokedex.results }));
   }
 
   render() {
+    const { pokedex, searchField } = this.state;
+    pokedex.forEach((item, i) => {
+      item.id = i + 1;
+    });
+    const filteredPokemons = pokedex.filter((pokemon) =>
+      pokemon.name.toLowerCase().includes(searchField.toLowerCase())
+    );
+    console.log(filteredPokemons);
     return (
       <div className="App">
-        {this.state.pokedex.map((pokemon, index) => (
-          <>
-            <h1 key={index}>{pokemon.name}</h1>
-            <a href={pokemon.url} key={index}>
-              {pokemon.url}
-            </a>
-          </>
-        ))}
+        <input
+          type="search"
+          placeholder="Search pokemon"
+          onChange={(e) => this.setState({ searchField: e.target.value })}
+        />
+        <CardList pokedex={filteredPokemons} />
       </div>
     );
   }
