@@ -17,7 +17,7 @@ class App extends Component {
       .then((response) => response.json())
       .then((users) => console.log(users));
       */
-    fetch("https://pokeapi.co/api/v2/pokemon/?limit=500")
+    fetch("https://pokeapi.co/api/v2/pokemon/?limit=898")
       .then((response) => response.json())
       .then((pokedex) => this.setState({ pokedex: pokedex.results }));
   }

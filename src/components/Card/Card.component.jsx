@@ -5,7 +5,7 @@ export const Card = (props) => (
   <div className="card-container">
     <img
       alt="pokemon"
-      src={`https://cdn.traction.one/pokedex/pokemon/${props.pokemon.id}.png`}
+      src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/${props.pokemon.id}.png`}
       width="300"
       height="300"
     ></img>
