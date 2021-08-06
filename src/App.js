@@ -1,4 +1,4 @@
-import { Component } from "react";
+import React, { Component } from "react";
 import { CardList } from "./components/CardList/CardList.component";
 import { SearchBox } from "./components/SearchBox/SearchBox.component";
 import "./App.css";
